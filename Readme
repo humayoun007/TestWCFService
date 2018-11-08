@@ -1,0 +1,49 @@
+
+you can publish project  as file system and add in iis. for iis you need to add folder permission for  IIS_IUSRS users
+
+you can also use a wcf tool , for that you need to set svc file as default page.
+
+for service refererences you can both add publish iis address(localhost/[websitename]/BookService.svc)
+or default service refererences which will choose from solution.
+
+i have choose the project type wcf application if you choose wcf library then you can configure app.config using gui tool shows as  (edit wcf configuation file).
+
+you can also create proxy by this command in vs command tool -> svcutil localhost/[websitename]/BookService.svc 
+
+or just run the svc in browser from visual studio and then in vs command tool -> svcutil [that web address]
+
+
+sample app.config (general)
+
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <system.serviceModel>    <services>
+      <!-- This section is optional with the new configuration model
+           introduced in .NET Framework 4. -->
+      <service name="Microsoft.ServiceModel.Samples.CalculatorService"
+               behaviorConfiguration="CalculatorServiceBehavior">
+        <host>
+          <baseAddresses>
+            <add baseAddress="http://localhost:8000/ServiceModelSamples/service"/>
+          </baseAddresses>
+        </host>
+        <!-- this endpoint is exposed at the base address provided by host: http://localhost:8000/ServiceModelSamples/service  -->
+        <endpoint address=""
+                  binding="wsHttpBinding"
+                  contract="Microsoft.ServiceModel.Samples.ICalculator" />
+        <!-- the mex endpoint is exposed at http://localhost:8000/ServiceModelSamples/service/mex -->
+        <endpoint address="mex"
+                  binding="mexHttpBinding"
+                  contract="IMetadataExchange" />
+      </service>
+    </services>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="CalculatorServiceBehavior">
+          <serviceMetadata httpGetEnabled="true"/>
+          <serviceDebug includeExceptionDetailInFaults="False"/>
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+  </system.serviceModel>
+</configuration>

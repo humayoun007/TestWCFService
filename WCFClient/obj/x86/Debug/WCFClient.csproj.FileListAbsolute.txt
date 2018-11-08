@@ -1,0 +1,5 @@
+C:\Users\humayoun\Desktop\TestWCF\WCFClient\bin\Debug\WCFClient.exe.config
+C:\Users\humayoun\Desktop\TestWCF\WCFClient\bin\Debug\WCFClient.exe
+C:\Users\humayoun\Desktop\TestWCF\WCFClient\bin\Debug\WCFClient.pdb
+C:\Users\humayoun\Desktop\TestWCF\WCFClient\obj\x86\Debug\WCFClient.exe
+C:\Users\humayoun\Desktop\TestWCF\WCFClient\obj\x86\Debug\WCFClient.pdb
